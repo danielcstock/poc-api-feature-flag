@@ -16,13 +16,13 @@ namespace poc_api_feature_flag.Controllers
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
-        private readonly FeatureManager _featureManager;
+        private readonly IFeatureManager _featureManager;
         private readonly ILogger<WeatherForecastController> _logger;
 
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
-            _featureManager = new FeatureManager();
+            _featureManager = new SplitIO();
         }
 
         [HttpGet]

@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace poc_api_feature_flag.Common
 {
-    public class FeatureManager
+    public class SplitIO : IFeatureManager
     {
-        public bool isFeatureActivated(string featureKey)
+        bool IFeatureManager.isFeatureActivated(string featureKey)
         {
-            return true;
+            return false;
         }
     }
 }
