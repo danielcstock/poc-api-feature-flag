@@ -9,6 +9,7 @@ namespace poc_api_feature_flag.Common
     {
         bool IFeatureManager.isFeatureActivated(string featureKey)
         {
+            
             return false;
         }
     }
