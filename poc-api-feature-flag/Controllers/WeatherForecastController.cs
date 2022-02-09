@@ -28,12 +28,12 @@ namespace poc_api_feature_flag.Controllers
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();
+            string[] users = { "client_a", "client_b" };
 
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                isFeatureActive = _featureManager.isFeatureActivated("getSummary")
+                user = users[index % 2],
+                isFeatureActive = _featureManager.isFeatureActivated("test_split", users[index % 2])
             }).ToArray();
         }
     }

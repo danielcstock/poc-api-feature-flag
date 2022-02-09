@@ -2,6 +2,6 @@
 {
     public interface IFeatureManager
     {
-        public bool isFeatureActivated(string featureKey);
+        public bool isFeatureActivated(string featureKey, string user);
     }
 }
