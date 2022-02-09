@@ -26,28 +26,16 @@ namespace poc_api_feature_flag.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<IWeatherForeacast> Get()
+        public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();
 
-            if (_featureManager.isFeatureActivated("getSummary"))
+            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
-                return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-                {
-                    Date = DateTime.Now.AddDays(index),
-                    TemperatureC = rng.Next(-20, 55),
-                    Summary = Summaries[rng.Next(Summaries.Length)]
-                })
-                .ToArray();
-            } else
-            {
-                return Enumerable.Range(1, 5).Select(index => new WeatherForecastSimple
-                {
-                    Date = DateTime.Now.AddDays(index),
-                    TemperatureC = rng.Next(-20, 55)
-                })
-                .ToArray();
-            }
+                Date = DateTime.Now.AddDays(index),
+                TemperatureC = rng.Next(-20, 55),
+                isFeatureActive = _featureManager.isFeatureActivated("getSummary")
+            }).ToArray();
         }
     }
 }
