@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Splitio.Services.Client.Classes;
 
 namespace poc_api_feature_flag.Common
