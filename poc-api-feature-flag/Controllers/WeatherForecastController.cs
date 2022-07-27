@@ -33,7 +33,7 @@ namespace poc_api_feature_flag.Controllers
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 user = users[index % 2],
-                isFeatureActive = _featureManager.isFeatureActivated("test_split", users[index % 2])
+                isFeatureActive = _featureManager.isFeatureActivated("featureA", users[index % 2])
             }).ToArray();
         }
     }
